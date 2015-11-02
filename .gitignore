@@ -1,3 +1,6 @@
-*.vo
-*.glob
-*.v.d
+.build/
+.idea/
+bower_components/
+node_modules/
+*.DS_Store
+npm-debug.log
