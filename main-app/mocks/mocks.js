@@ -3,7 +3,7 @@ var mocks;
     'use strict';
     mocks = {
         $state: {
-            $current: 'lobby',
+            $current: 'purchase',
             go: function(state){}
         },
         GameServerProxy: {

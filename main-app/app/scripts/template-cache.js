@@ -20,22 +20,59 @@
                         '</ul>' +
                     '</form>' +
                 '</section>'
-            ).put('html/game-state.html',
-                '<section>' +
-                '<h1>Bingo89</h1>' +
-                '<h2>Your Ticket</h2>' +
+            );
+            $templateCache.put('html/game-state.html',
+                '<section class="center">' +
+                    '<h1>Bingo89</h1>' +
+                    '<h2>Your Ticket</h2>' +
+                    '<h2>Current Call: {{currentCall}}</h2>' +
                     '<table>' +
                         '<tr>' +
-                            '<td></td>' +
+                            '<td ticket-square="0"></td>' +
+                            '<td ticket-square="1"></td>' +
+                            '<td ticket-square="2"></td>' +
+                            '<td ticket-square="3"></td>' +
+                            '<td ticket-square="4"></td>' +
+                            '<td ticket-square="5"></td>' +
+                            '<td ticket-square="6"></td>' +
+                            '<td ticket-square="7"></td>' +
+                            '<td ticket-square="8"></td>' +
                         '</tr>' +
                         '<tr>' +
+                            '<td ticket-square="9"></td>' +
+                            '<td ticket-square="10"></td>' +
+                            '<td ticket-square="11"></td>' +
+                            '<td ticket-square="12"></td>' +
+                            '<td ticket-square="13"></td>' +
+                            '<td ticket-square="14"></td>' +
+                            '<td ticket-square="15"></td>' +
+                            '<td ticket-square="16"></td>' +
+                            '<td ticket-square="17"></td>' +
                         '</tr>' +
                         '<tr>' +
+                            '<td ticket-square="18"></td>' +
+                            '<td ticket-square="19"></td>' +
+                            '<td ticket-square="20"></td>' +
+                            '<td ticket-square="21"></td>' +
+                            '<td ticket-square="22"></td>' +
+                            '<td ticket-square="23"></td>' +
+                            '<td ticket-square="24"></td>' +
+                            '<td ticket-square="25"></td>' +
+                            '<td ticket-square="26"></td>' +
                         '</tr>' +
                     '</table>' +
+                    '<div class="toGo">' +
+                    '<div>{{toGo}}</div>' +
+                    '<div>To</div>' +
+                    '<div>Go</div>' +
+                    '</div>' +
                 '</section>'
-            ).put('html/ticket-square.html',
-                '<td></td>'
+            );
+            $templateCache.put('html/purchase-state.html',
+                '<section>' +
+                    '<h1>Purchase Screen</h1>' +
+                    '<button ng-click="purchaseTicket()">Buy Ticket</button>' +
+                '</section>'
             );
         }
         ]);

@@ -5,6 +5,7 @@
         .service('GameServerProxy',['$q', '$http', function($q, $http){
             var me = this;
             me.ApiCall = function(req){
+                console.log(req);
                 var defered = $q.defer();
                 $http(req).then(
                     function(response) {
@@ -15,10 +16,6 @@
                 );
 
                 return defered.promise;
-            };
-
-            me.makeLoginRequest = function(username, password){
-
             };
     }]);
 })();
