@@ -2,14 +2,15 @@
     'use strict';
 
     angular.module('Tombola.Games.Bingo90.Game').
-        controller('game', ['$scope', '$state', '$interval', 'GameServerProxy', 'RequestShaper', 'UserDetails', 'Ticket', 'CallHandler',
-            function($scope, $state, $interval, proxy, req, userValue, ticket, callHandler){
+        controller('game', ['$scope', '$state', '$interval', 'GameServerProxy', 'RequestShaper', 'UserDetails', 'Ticket', 'CallHandler', 'GameState',
+            function($scope, $state, $interval, proxy, req, userValue, ticket, callHandler, gameState){
                 var me = this;
 
                 $scope.currentCall = "";
                 $scope.ticket = ticket;
                 $scope.toGo = 5;
                 $scope.callNumber = 0;
+                $scope.currentStage = gameState.currentStage;
 
                 me.nextCall = function(){
                     $scope.callNumber += 1;
@@ -22,6 +23,7 @@
                         function(data){
                             $scope.currentCall = callHandler.addNewCall(data);
                             $scope.toGo = callHandler.checkTicketOneLine(ticket.unorderedNumbers);
+                            gameState.checkForWin(data);
                         },
                         function(data){
                             $interval.cancel(callInterval);

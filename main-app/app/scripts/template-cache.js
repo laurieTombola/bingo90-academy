@@ -25,7 +25,9 @@
                 '<section class="center">' +
                     '<h1>Bingo89</h1>' +
                     '<h2>Your Ticket</h2>' +
-                    '<h2>Current Call: {{currentCall}}</h2>' +
+                    '<h2>Current Stage: {{currentStage}}</h2>' +
+                    '<h2>Last Call: {{currentCall}}</h2>' +
+                    '<h2>Number of Calls Left: {{90-callNumber}}</h2>' +
                     '<table>' +
                         '<tr>' +
                             '<td ticket-square="0"></td>' +
