@@ -2,36 +2,38 @@
     'use strict';
 
     angular.module('Tombola.Games.Bingo90.Game').
-        controller('game', ['$scope', '$state', '$interval', 'GameServerProxy', 'RequestShaper', 'UserDetails', 'Ticket',function($scope, $state, $interval, proxy, req, userValue, ticket){
-            var me = this;
+        controller('game', ['$scope', '$state', '$interval', 'GameServerProxy', 'RequestShaper', 'UserDetails', 'Ticket', 'CallHandler',
+            function($scope, $state, $interval, proxy, req, userValue, ticket, callHandler){
+                var me = this;
 
-            $scope.currentCall = "";
-            $scope.ticket = ticket;
-            $scope.toGo = 5;
-            $scope.callNumber = 0;
+                $scope.currentCall = "";
+                $scope.ticket = ticket;
+                $scope.toGo = 5;
+                $scope.callNumber = 0;
 
-            //me.fillTicket = function(){
-            //    $scope.ticketNumbers = ticket.orderedNumbers;
-            //};
-            me.nextCall = function(){
-                $scope.callNumber += 1;
-                return $scope.callNumber;
-            };
+                me.nextCall = function(){
+                    $scope.callNumber += 1;
+                    return $scope.callNumber;
+                };
 
-            me.getCall = function(){
-                proxy.ApiCall(req.makeCallRequest(userValue.data.token, me.nextCall())).then(
-                    function(data){
-                        console.log(data);
-                        $scope.currentCall = data.payload.call;
-                        $interval(me.getCall(), 3000, 1);
-                    },
-                    function(data){
+                me.getCall = function(){
+                    console.log('Call Number: ' + $scope.callNumber+1);
+                    proxy.ApiCall(req.makeCallRequest(userValue.data.token, me.nextCall())).then(
+                        function(data){
+                            $scope.currentCall = callHandler.addNewCall(data);
+                            $scope.toGo = callHandler.checkTicketOneLine(ticket.unorderedNumbers);
+                        },
+                        function(data){
+                            $interval.cancel(callInterval);
+                        }
+                    );
+                };
+                var callInterval;
+                me.beginCalls = function(){
+                    callInterval = $interval(me.getCall, 500, 90);
+                };
 
-                    }
-                );
-            };
-
-            me.getCall();
+                me.beginCalls();
 
         }]);
 })();
