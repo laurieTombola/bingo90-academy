@@ -16,6 +16,17 @@
                 };
             };
 
+            me.makeLogoutRequest = function(token){
+                return {
+                    method: 'POST',
+                    url: 'http://eutaveg-01.tombola.emea:30069/users/logout',
+                    headers: {
+                        'x-token': token,
+                        'Content-Type': 'application/json'
+                    }
+                };
+            };
+
             me.makePurchaseRequest = function(token){
                 return {
                     method: 'POST',

@@ -68,12 +68,14 @@
                     '<div>To</div>' +
                     '<div>Go</div>' +
                     '</div>' +
+                    '<button ng-click="logout()">logout</button>' +
                 '</section>'
             );
             $templateCache.put('html/purchase-state.html',
                 '<section>' +
                     '<h1>Purchase Screen</h1>' +
                     '<button ng-click="purchaseTicket()">Buy Ticket</button>' +
+                    '<button ng-click="logout()">logout</button>' +
                 '</section>'
             );
         }

@@ -7,7 +7,7 @@ var mocks;
             go: function(state){}
         },
         GameServerProxy: {
-            APICall:function(){}
+            apiCall:function(){}
         }
     };
 })();

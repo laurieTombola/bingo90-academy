@@ -19,7 +19,7 @@
 
                 me.getCall = function(){
                     console.log('Call Number: ' + $scope.callNumber+1);
-                    proxy.ApiCall(req.makeCallRequest(userValue.data.token, me.nextCall())).then(
+                    proxy.apiCall(req.makeCallRequest(userValue.data.token, me.nextCall())).then(
                         function(data){
                             $scope.currentCall = callHandler.addNewCall(data);
                             $scope.toGo = callHandler.checkTicketOneLine(ticket.unorderedNumbers);
@@ -37,5 +37,11 @@
 
                 me.beginCalls();
 
+                $scope.logout = function(){
+                    proxy.apiCall(req.makeLogoutRequest(userValue.data.token));
+                    userValue.data = {};
+                    $interval.cancel(callInterval);
+                    $state.go('login');
+                };
         }]);
 })();

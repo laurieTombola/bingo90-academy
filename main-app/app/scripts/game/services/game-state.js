@@ -4,7 +4,7 @@
         service('GameState', ['$state', 'Bingo90States', function($state, states){
             var me = this;
             me.states = states;
-            me.currentStage = me.gameStages[0];
+            me.currentStage = me.states.gameStages[0];
             me.oneLineWin = function(){
                 nextStage();
             };

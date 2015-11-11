@@ -4,7 +4,7 @@
     angular.module('Tombola.Games.Bingo90.API')
         .service('GameServerProxy',['$q', '$http', function($q, $http){
             var me = this;
-            me.ApiCall = function(req){
+            me.apiCall = function(req){
                 console.log(req);
                 var defered = $q.defer();
                 $http(req).then(

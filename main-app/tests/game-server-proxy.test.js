@@ -18,7 +18,7 @@
                 .respond(function(){
                     return [200, {"message":'Success'}];
                 });
-            gameServerProxy.ApiCall({method: 'POST', url: 'some url'})
+            gameServerProxy.apiCall({method: 'POST', url: 'some url'})
                 .then(function(data){
                     data.message.should.equal('Success');
                 });
@@ -30,7 +30,7 @@
                 .respond(function(){
                     return [401, {"message":'Failed Request'}];
                 });
-            gameServerProxy.ApiCall({method: 'POST', url: 'some url'})
+            gameServerProxy.apiCall({method: 'POST', url: 'some url'})
                 .then(function(data){}, function(response){
                     response.data.message.should.equal('Failed Request');
                 });

@@ -7,7 +7,7 @@
             $scope.password = "";
 
             $scope.logIn = function(){
-                proxy.ApiCall(dataShaper.makeLoginRequest($scope.username, $scope.password)).then(
+                proxy.apiCall(dataShaper.makeLoginRequest($scope.username, $scope.password)).then(
                     function(data){
                         userDetails.data = data.payload.user;
                         $state.go('purchase');
