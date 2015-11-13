@@ -64,16 +64,19 @@
                         '</tr>' +
                     '</table>' +
                     '<div class="toGo">' +
-                    '<div>{{toGo}}</div>' +
-                    '<div>To</div>' +
-                    '<div>Go</div>' +
+                        '<div>{{toGo}}</div>' +
+                        '<div>To</div>' +
+                        '<div>Go</div>' +
                     '</div>' +
                     '<button ng-click="logout()">logout</button>' +
                 '</section>'
             );
             $templateCache.put('html/purchase-state.html',
-                '<section>' +
-                    '<h1>Purchase Screen</h1>' +
+                '<section class="center">' +
+                    '<div class="background">' +
+                        '<h1>Purchase Screen</h1>' +
+                        '<h2>Next Game In: {{nextGameTime|date:"mm:ss"}}</h2>' +
+                    '</div>' +
                     '<button ng-click="purchaseTicket()">Buy Ticket</button>' +
                     '<button ng-click="logout()">logout</button>' +
                 '</section>'

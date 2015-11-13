@@ -5,7 +5,6 @@
         .service('GameServerProxy',['$q', '$http', function($q, $http){
             var me = this;
             me.apiCall = function(req){
-                console.log(req);
                 var defered = $q.defer();
                 $http(req).then(
                     function(response) {
