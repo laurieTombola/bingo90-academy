@@ -11,7 +11,7 @@
         });
 
         it('should equal an empty object', function(){
-            userDetails.should.deep.equal({});
+            userDetails.should.deep.equal({data:{}});
         });
     });
 
