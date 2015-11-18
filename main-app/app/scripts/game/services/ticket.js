@@ -54,7 +54,7 @@
             };
 
             me.calcOneLineToGo = function () {
-                var row, column, toGos = [5, 5, 5], bestToGo = 5;
+                var row, column, toGos = [5, 5, 5];
                 for (row = 0; row < 3; row++) {
                     for (column = 0; column < 9; column++) {
                         if (me.marks[column + (row * 9)] === "marked") {
