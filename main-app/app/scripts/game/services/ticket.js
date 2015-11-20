@@ -44,10 +44,7 @@
             me.calcToGo = function (stage) {
                 switch (stage) {
                     case "One Line":
-                        //return me.calcOneLineToGo();
-                        return me.calcFullHouseToGo();
-                    case "Two Lines":
-                        return me.calcTwoLinesToGo();
+                        return me.calcOneLineToGo();
                     case "Full House":
                         return me.calcFullHouseToGo();
                 }
@@ -67,21 +64,15 @@
                     console.log("Line One: " + toGos[0]);
                     return toGos[0];
                 }
-                else {
-                    if (toGos[1] <= toGos[0] && toGos[1] <= toGos[2]) {
-                        console.log("Line Two: " + toGos[1]);
-                        return toGos[1];
-                    }
-                    else {
-                        if (toGos[2] <= toGos[0] && toGos[2] <= toGos[1]) {
-                            console.log("Line Three: " + toGos[2]);
-                            return toGos[2];
-                        }
-                    }
+                else if (toGos[1] <= toGos[0] && toGos[1] <= toGos[2]) {
+                    console.log("Line Two: " + toGos[1]);
+                    return toGos[1];
                 }
-            };
+                else if (toGos[2] <= toGos[0] && toGos[2] <= toGos[1]) {
+                    console.log("Line Three: " + toGos[2]);
+                    return toGos[2];
+                }
 
-            me.calcTwoLinesToGo = function () {
 
             };
 
