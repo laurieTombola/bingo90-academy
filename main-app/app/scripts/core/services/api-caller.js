@@ -2,7 +2,7 @@
     'use strict';
 
     angular.module('Tombola.Games.Bingo90.API')
-        .service('ApiCaller', ['$q', '$http', 'Converter', 'UserDetails', 'RequestShaper',
+        .service('ApiCaller', ['$q', '$http', 'Converter',
             function ($q, $http) {
                 var me = this;
                 me.apiCall = function (req) {
