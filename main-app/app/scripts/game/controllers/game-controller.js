@@ -24,7 +24,7 @@
                 };
 
                 me.getCall = function () {
-                    proxy.apiCall(req.makeCallRequest(userValue.data.token, me.nextCall())).then(
+                    proxy.apiCall(req.makeCallRequest(me.nextCall())).then(
                         function (data) {
                             $scope.currentCall = callHandler.addNewCall(data);
                             me.markTicket(me.formatSingleDigitCall(data.payload.call));

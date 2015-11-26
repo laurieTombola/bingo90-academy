@@ -1,12 +1,17 @@
 (function () {
     'use strict';
     angular.module('Tombola.Games.Bingo90.Purchase').
-        service('GamerTimer', ['PurchaseApiProxy', 'Authenticate', function(proxy, auth){
+        service('GamerTimer', ['$state', 'PurchaseApiProxy', 'Authenticate', function ($state, proxy, auth) {
             var me = this;
             me.nextGameTime = 0;
 
-            me.getNextGameTime = function(){
-                proxy.purchase().then(function(data){
+            me.getNextGameTime = function () {
+                if (!auth.authenticate()) {
+                    auth.logout();
+                    $state.go('login');
+                    return;
+                }
+                proxy.purchase().then(function (data) {
                     var gameDate = new Date(data.payload.start);
                     var currentDate = new Date();
 
@@ -16,10 +21,10 @@
                 });
             };
 
-            me.tick = function(){
+            me.tick = function () {
                 $scope.nextGameTime -= 1000;
-                if($scope.nextGameTime < 0){
-                    if(me.ticketBought){
+                if ($scope.nextGameTime < 0) {
+                    if (me.ticketBought) {
                         $state.go('game');
                         return;
                     }

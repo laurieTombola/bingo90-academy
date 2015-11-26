@@ -8,6 +8,5 @@
                 me.calls.push(data.payload.call);
                 return data.payload.call;
             };
-            
         }]);
 })();

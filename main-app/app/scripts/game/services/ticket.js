@@ -59,7 +59,6 @@
                         }
                     }
                 }
-                console.log(toGos);
                 if (toGos[0] <= toGos[1] && toGos[0] <= toGos[2]) {
                     console.log("Line One: " + toGos[0]);
                     return toGos[0];
@@ -72,8 +71,6 @@
                     console.log("Line Three: " + toGos[2]);
                     return toGos[2];
                 }
-
-
             };
 
             me.calcFullHouseToGo = function () {

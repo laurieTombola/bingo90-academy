@@ -1,43 +1,44 @@
 (function () {
     'use strict';
 
-    describe('GameServerProxy tests', function(){
+    describe('GameServerProxy tests', function () {
         var gameServerProxy, $httpBackend;
 
-        beforeEach(function(){
+        beforeEach(function () {
             module('Tombola.Games.Bingo90.API');
 
-            inject(function($injector){
+            inject(function ($injector) {
                 gameServerProxy = $injector.get('GameServerProxy');
                 $httpBackend = $injector.get('$httpBackend');
             });
         });
 
-        it('should call the success callback', function(){
+        it('should call the success callback', function () {
             $httpBackend.expectPOST('some url')
-                .respond(function(){
-                    return [200, {"message":'Success'}];
+                .respond(function () {
+                    return [200, {"message": 'Success'}];
                 });
             gameServerProxy.apiCall({method: 'POST', url: 'some url'})
-                .then(function(data){
+                .then(function (data) {
                     data.message.should.equal('Success');
                 });
             $httpBackend.flush();
         });
 
-        it('should call the success callback', function(){
+        it('should call the failure callback', function () {
             $httpBackend.expectPOST('some url')
-                .respond(function(){
-                    return [401, {"message":'Failed Request'}];
+                .respond(function () {
+                    return [401, {"message": 'Failed Request'}];
                 });
             gameServerProxy.apiCall({method: 'POST', url: 'some url'})
-                .then(function(data){}, function(response){
+                .then(function (data) {
+                }, function (response) {
                     response.data.message.should.equal('Failed Request');
                 });
             $httpBackend.flush();
         });
 
-        afterEach(function() {
+        afterEach(function () {
             $httpBackend.verifyNoOutstandingExpectation();
             $httpBackend.verifyNoOutstandingRequest();
         });
