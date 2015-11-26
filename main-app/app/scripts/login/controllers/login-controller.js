@@ -2,21 +2,20 @@
     'use strict';
 
     angular.module('Tombola.Games.Bingo90.Login').
-        controller('login', ['$scope', '$state', 'GameServerProxy', 'RequestShaper', 'UserDetails', function($scope, $state, proxy, dataShaper, userDetails){
+        controller('login',
+        ['$scope', '$state', 'Authenticator', 'UserDetails', function ($scope, $state, auth, userDetails) {
             $scope.username = "";
             $scope.password = "";
 
-            $scope.logIn = function(){
-                proxy.apiCall(dataShaper.makeLoginRequest($scope.username, $scope.password)).then(
-                    function(data){
+            $scope.logIn = function () {
+                auth.login($scope.username, $scope.password).then(
+                    function (data) {
                         userDetails.data = data.payload.user;
                         $state.go('purchase');
                     },
-                    function(response){
-
+                    function (response) {
+                        //TODO invalid username / password stuff
                     });
             };
         }]);
 })();
-
-//YOU DID NOT SET UP THE PURCHASE MODULE! DICK WITT!!!!!
