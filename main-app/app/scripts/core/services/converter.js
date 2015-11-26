@@ -9,7 +9,7 @@
                 me.convertLoginData = function(response){
                     return {
                         token: response.payload.user.token,
-                        userId: reponse.payload.user.userId,
+                        userId: response.payload.user.userId,
                         balance: response.payload.user.balance
                     };
                 };

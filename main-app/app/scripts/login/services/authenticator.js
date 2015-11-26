@@ -2,7 +2,7 @@
     'use strict';
 
     angular.module('Tombola.Games.Bingo90.API').
-        service('Authenticator', ['$state', 'ApiCaller', 'Converter', function ($state, api, converter) {
+        service('Authenticator', ['$state', '$q', 'ApiCaller', 'Converter', function ($state, $q, api, converter) {
             var me = this;
 
             me.sessionDetails = {};
@@ -12,7 +12,7 @@
                 api.apiCall(makeLoginRequest(username, password)).then(
                     function (response) {
                         me.sessionDetails.data = converter.convertLoginData(response);
-                        defered.resolve(userDetails.data);
+                        defered.resolve(me.sessionDetails.data);
                     }, function (response) {
                         defered.reject(response);
                     }
