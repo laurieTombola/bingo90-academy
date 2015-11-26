@@ -3,14 +3,13 @@
 
     angular.module('Tombola.Games.Bingo90.Login').
         controller('login',
-        ['$scope', '$state', 'Authenticator', 'UserDetails', function ($scope, $state, auth, userDetails) {
+        ['$scope', '$state', 'Authenticator', function ($scope, $state, auth) {
             $scope.username = "";
             $scope.password = "";
 
             $scope.logIn = function () {
                 auth.login($scope.username, $scope.password).then(
                     function (data) {
-                        userDetails.data = data.payload.user;
                         $state.go('purchase');
                     },
                     function (response) {
