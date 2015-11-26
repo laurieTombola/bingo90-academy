@@ -5,6 +5,8 @@
         service('PurchaseApiProxy',
         ['$q', 'Authenticator', 'ApiCaller', 'Converter', function ($q, auth, api, converter) {
 
+            var me = this;
+
             me.purchase = function () {
                 var defered = $q.defer();
                 api.apiCall(makePurchaseRequest().then(
